@@ -1,0 +1,263 @@
+:root {
+  --bg-dark: #0a0a0a;
+  --bg-light: #f0f0f0;
+  --text-dark: #ffffff;
+  --text-light: #0a0a0a;
+  --accent: #00ffff;
+  --accent-hover: #00b3b3;
+  --neon-blue: #00f3ff;
+  --neon-cyan: #00fff3;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+.light-mode {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* Marquesina */
+
+.marquee-container {
+  background: #000;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.marquee {
+  display: block;
+  padding: 15px 0;
+  animation: scroll-marquee 30s linear infinite;
+  font-size: 1.2em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Header */
+
+header {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(45deg, var(--accent), #0066ff);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+.logo-placeholder {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3em;
+  margin: 0;
+  text-shadow: 0 0 10px var(--accent);
+}
+
+/* Secciones */
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--accent);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, var(--neon-cyan) 0%, transparent 70%);
+  opacity: 0.1;
+  animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+}
+
+.card h2 {
+  color: var(--accent);
+  margin-top: 0;
+  font-family: 'Orbitron', sans-serif;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card li {
+  margin: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-dark);
+}
+
+.card li::before {
+  content: '⚡';
+  position: absolute;
+  left: 0;
+  color: var(--neon-blue);
+}
+
+/* Footer */
+
+.contact {
+  background: #111;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 15px;
+  margin: 2rem 0;
+}
+
+.contact h2 {
+  color: var(--neon-blue);
+}
+
+.contact p {
+  margin: 0.5rem 0;
+}
+
+.contact a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.social-links a:hover {
+  color: var(--neon-cyan);
+}
+
+/* Botones */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem 0;
+  background: linear-gradient(45deg, var(--accent), #0066ff);
+  border: none;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, var(--neon-cyan), var(--neon-blue));
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+/* Toggle Theme */
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--accent-hover);
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2em;
+  }
+}
+
